@@ -1,0 +1,23 @@
+{
+    "name": "colorpicker",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "dependencies": {
+        "express": "^4.17.1"
+    },
+    "devDependencies": {},
+    "scripts": {
+        "start": "node server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/GPabloPGarcia/ColorPicker.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/GPabloPGarcia/ColorPicker/issues"
+    },
+    "homepage": "https://github.com/GPabloPGarcia/ColorPicker#readme"
+}

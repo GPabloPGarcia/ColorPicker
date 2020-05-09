@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Picker</title>
+    <style>
+        .header {
+            width: 100%;
+            min-width: 300px;
+            margin: 10px 0;
+            background-color: #fff;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            border-radius: 5px;
+            border-bottom: 5px solid #cccccc;
+        }
+        
+        .header h1 {
+            margin-left: 50px;
+            text-shadow: 2px 2px 4px #888;
+        }
+        
+        #box {
+            max-width: 350px;
+            min-width: 300px;
+            height: auto;
+            margin: 200px auto;
+            padding: 10px 10px 20px 10px;
+            text-align: center;
+            background-color: #fff;
+            border-radius: 8px;
+        }
+        
+        #hex-text,
+        #rgb-text {
+            padding: 8px;
+            border-radius: 5px 0px 0px 5px;
+        }
+        
+        .btn {
+            padding: 10px;
+            width: 200px;
+            border-radius: 5px;
+            border: none;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .copy {
+            border: none;
+            padding: 10px 8px 8px 8px;
+            border-radius: 0px 5px 5px 0px;
+            background-color: #999;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <h1 class="title">Color Picker</h1>
+    </header>
+    <main id="box">
+        <div>
+            <div class="hex">
+                <h4>HEX&nbsp;<span id="hex-text">#878877</span><button class="copy">copy</button></h4>
+
+            </div>
+            <div class="rgb">
+                <h4>RGB&nbsp;<span id="rgb-text">rgb(0, 128, 125)</span><button class="copy">copy</button></h4>
+            </div>
+
+            <button class="btn" id="btn">Click me</button>
+        </div>
+    </main>
+    <script defer>
+        function generateHexColor() {
+            const baseHex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "E", "F"];
+
+            let hex = "#";
+
+            for (let i = 0; i < 6; i++) {
+                let random = Math.floor(Math.random() * baseHex.length);
+
+                hex += baseHex[random];
+            }
+
+            return hex;
+        }
+
+        function hexToRgb(hex) {
+            var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+            return result ? {
+                r: parseInt(result[1], 16),
+                g: parseInt(result[2], 16),
+                b: parseInt(result[3], 16)
+            } : null;
+        }
+
+        let btn = document.getElementById("btn");
+        let hexText = document.getElementById("hex-text");
+        let rgbText = document.getElementById("rgb-text");
+        let box = document.getElementById("box");
+        let copy = document.querySelectorAll(".copy");
+
+        const initHex = generateHexColor();
+        const {
+            r,
+            g,
+            b
+        } = hexToRgb(initHex);
+        const rgb = `rgb(${r}, ${g}, ${b})`;
+
+        document.body.style.backgroundColor = initHex;
+        box.style.border = `4px solid #00${initHex.substr(3, 4)}`;
+
+        hexText.textContent = initHex;
+        hexText.style.color = "#fff";
+        hexText.style.backgroundColor = initHex;
+
+        rgbText.textContent = rgb;
+        rgbText.style.color = "#fff";
+        rgbText.style.backgroundColor = rgb;
+
+        btn.style.color = "#fff";
+        btn.style.backgroundColor = initHex;
+
+        btn.addEventListener("click", () => {
+            const hex = generateHexColor();
+            const {
+                r,
+                g,
+                b
+            } = hexToRgb(hex);
+            const rgb = `rgb(${r}, ${g}, ${b})`;
+
+            document.body.style.backgroundColor = hex;
+
+            btn.style.backgroundColor = hex;
+            box.style.border = `4px solid #00${hex.substr(3, 4)}`;
+
+            hexText.textContent = hex;
+            hexText.style.color = "#fff";
+            hexText.style.backgroundColor = hex;
+
+            rgbText.textContent = rgb;
+            rgbText.style.color = "#fff";
+            rgbText.style.backgroundColor = rgb;
+        });
+    </script>
+</body>
+
+</html>

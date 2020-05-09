@@ -6,7 +6,7 @@
     padding-top: 5px;
     padding-bottom: 5px;
     border-radius: 5px;
-    border-bottom: 3px solid #ccc6;
+    border-bottom: 5px solid #cccccc;
 }
 
 .header h1 {
@@ -18,7 +18,7 @@
     max-width: 350px;
     min-width: 300px;
     height: auto;
-    margin: 20px auto;
+    margin: 200px auto;
     padding: 10px 10px 20px 10px;
     text-align: center;
     background-color: #fff;

@@ -53,6 +53,7 @@ btn.addEventListener("click", () => {
     document.body.style.backgroundColor = hex;
 
     btn.style.backgroundColor = hex;
+    box.style.border = `4px solid #00${hex.substr(3, 4)}`;
 
     hexText.textContent = hex;
     hexText.style.color = "#fff";
